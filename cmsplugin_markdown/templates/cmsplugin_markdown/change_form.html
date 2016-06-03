@@ -1,6 +1,5 @@
 {% extends "admin/cms/page/plugin/change_form.html" %}
-
-{% block top %}<div id="epiceditor"></div>{% endblock %}
+{% load staticfiles %}
 
 {% block extrastyle %}
 {{ block.super }}
@@ -9,13 +8,18 @@
 
 {% block extrahead %}
 {{ block.super }}
-<script src="{{ STATIC_URL }}cmsplugin_markdown/js/epiceditor.min.js"></script>
+<div id="epiceditor"></div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{{ STATIC_URL }}cmsplugin_markdown/js/epiceditor.js"></script>
 <script>
-$(document).ready(function () {
+jQuery(function ($) {
     $('#markdownplugin_form>div').hide();
     var opts = {
         basePath: '{{ STATIC_URL }}cmsplugin_markdown'
         ,clientSideStorage: false
+        ,button: {
+          fullscreen: false
+        }
     }
     var editor = new EpicEditor(opts).load();
     var text = jQuery(editor.getElement('editor').body);
