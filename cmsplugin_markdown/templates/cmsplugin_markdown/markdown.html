@@ -1,2 +1,8 @@
-{% load markup %}
-{{ text|markdown }}
+{% load cms_tags sekizai_tags %}
+{% block css %}
+  {% addtoblock "css" %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cmsplugin_markdown/css/pygments/default.css" />
+  {% endaddtoblock %}
+{% endblock %}
+
+{{ text|safe }}
