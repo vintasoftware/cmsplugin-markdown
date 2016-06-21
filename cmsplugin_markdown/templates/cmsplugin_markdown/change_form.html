@@ -3,19 +3,19 @@
 
 {% block extrastyle %}
 {{ block.super }}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cmsplugin_markdown/themes/base/epiceditor.css" />
+<link rel="stylesheet" type="text/css" href="{% static 'cmsplugin_markdown/themes/base/epiceditor.css' %}" />
 {% endblock %}
 
 {% block extrahead %}
 {{ block.super }}
 <div id="epiceditor"></div>
-<script src="{{ STATIC_URL }}cmsplugin_markdown/js/jquery.min.js"></script>
-<script src="{{ STATIC_URL }}cmsplugin_markdown/js/epiceditor.js"></script>
+<script src="{% static 'cmsplugin_markdown/js/jquery.min.js' %}"></script>
+<script src="{% static 'cmsplugin_markdown/js/epiceditor.js' %}"></script>
 <script>
 jQuery(function ($) {
     $('#markdownplugin_form>div').hide();
     var opts = {
-        basePath: '{{ STATIC_URL }}cmsplugin_markdown'
+        basePath: '{% static 'cmsplugin_markdown' %}'
         ,clientSideStorage: false
         ,button: {
           fullscreen: false
